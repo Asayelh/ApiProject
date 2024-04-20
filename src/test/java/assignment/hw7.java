@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class hw7 {
      /*
@@ -21,12 +22,30 @@ public class hw7 {
               Assert that the number of names whose ids are less than 3 is 2
     */
     @Test
-    public void ass7(){
-     String url = "https://reqres.in/api/users/23";
-    Response response = given().get(url);
-        response.prettyPrint();
+    public void ass7(){ String url = "https://reqres.in/api/unknown/";
+
+        Response response = given()
+                .get(url);
+
         response.then()
                 .statusCode(200);
+        response
+                .jsonPath()
+                .getList("data.pantone_value").forEach(System.out::println);
+        response
+                .jsonPath().
+                getList("data.findAll { it.id > 3 }.id").forEach(System.out::println);
+        response
+                .then()
+                .assertThat()
+                .body("data.findAll { it.id > 3 }.size()", equalTo(3));
+        response
+                .jsonPath().
+                getList("data.findAll { it.id < 3 }.name").forEach(System.out::println);
 
-}
+        response
+                .then()
+                .assertThat()
+                .body("data.findAll { it.id < 3 }.size()", equalTo(2));
+    }
 }
