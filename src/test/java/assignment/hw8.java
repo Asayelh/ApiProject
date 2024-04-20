@@ -1,16 +1,12 @@
 package assignment;
 
-
-import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-public class hw8 extends JsonPlaceHolderBaseUrl {
+public class hw8 {
      /*
         Given
             1) https://reqres.in/api/users

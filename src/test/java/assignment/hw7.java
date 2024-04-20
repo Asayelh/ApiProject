@@ -37,7 +37,6 @@ public class hw7 {
                 .body("data.findAll {it.id > 3}.size()", equalTo(3));
         response.jsonPath().
                 getList("data.findAll {it.id < 3}.name").forEach(System.out::println);
-
         response
                 .then()
                 .assertThat()
