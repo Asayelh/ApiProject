@@ -35,11 +35,12 @@ public class hw4 {
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("email", equalTo("\"janet.weaver@reqres.in\"")
-                        , "\"first_name\"", equalTo("Janet"),
-                        "\"last_name\"", equalTo("Weaver"),
-                        "text", equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
-
+                .body("data.email", equalTo("janet.weaver@reqres.in")
+                        , "data.first_name", equalTo("Janet"),
+                        "data.last_name", equalTo("Weaver"),
+                        "support.text", equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
     }
-}
+
+    }
+

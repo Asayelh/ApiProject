@@ -27,4 +27,10 @@ public class hw3 {
 
     String statusLine = response.statusLine();
         System.out.println("statusLine = "+statusLine);
+
+
+//         Response response = given().get(url);
+//        response.prettyPrint();
+//        response.then().statusCode().contentType().statusLine()
+
 }}
