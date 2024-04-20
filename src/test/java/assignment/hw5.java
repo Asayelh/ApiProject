@@ -24,7 +24,7 @@ import static org.hamcrest.Matchers.equalTo;
    */
 public class hw5 {
     @Test
-    public static void main(String[] args) {
+    public void ass5() {
 
         String url = "https://reqres.in/api/users/23";
         Response response = given().get(url);

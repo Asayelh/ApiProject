@@ -35,7 +35,7 @@ public class hw6 {
 
       */
     @Test
-    public static void main(String[] args) {
+    public void ass6() {
         String url = "https://reqres.in/api/unknown/3";
         Response response = given().get(url);
         response.prettyPrint();
@@ -47,10 +47,10 @@ public class hw6 {
         int id = response.jsonPath().getInt("data.id");
         String name = response.jsonPath().getString("data.name");
         int year = response.jsonPath().getInt("data.year");
-        String color = response.jsonPath().getString("data.color");
+        String color = response.jsonPath().getString("data.cooolor");
         String pantone_value = response.jsonPath().getString("data.pantone_value");
-        String Urll = response.jsonPath().getString("url");
-        String text = response.jsonPath().getString("text");
+        String Urll = response.jsonPath().getString("support.url");
+        String text = response.jsonPath().getString("support.text");
         softAssert.assertEquals(id, 3);
         softAssert.assertEquals(name, "true red");
         softAssert.assertEquals(year, 2002);
