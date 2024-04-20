@@ -24,24 +24,18 @@ public class hw7 {
     @Test
     public void ass7(){ String url = "https://reqres.in/api/unknown/";
 
-
-        Response response = given()
-                .get(url);
-
+        Response response = given().get(url);
         response.then()
                 .statusCode(200);
-        response
-                .jsonPath()
+        response.jsonPath()
                 .getList("data.pantone_value").forEach(System.out::println);
-        response
-                .jsonPath().
+        response.jsonPath().
                 getList("data.findAll {it.id > 3}.id").forEach(System.out::println);
         response
                 .then()
                 .assertThat()
                 .body("data.findAll {it.id > 3}.size()", equalTo(3));
-        response
-                .jsonPath().
+        response.jsonPath().
                 getList("data.findAll {it.id < 3}.name").forEach(System.out::println);
 
         response
