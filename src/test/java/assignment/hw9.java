@@ -15,7 +15,7 @@ public class hw9 {
 
         Map<String, Object> requestPayload = new HashMap<>();
         requestPayload.put("id", 0);
-        requestPayload.put("username", "myusername");
+        requestPayload.put("username", "username");
         requestPayload.put("firstName", "John");
         requestPayload.put("lastName", "Doe");
         requestPayload.put("email", "johndoe@gmail.com");

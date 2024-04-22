@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 public class hw10 {
     @Test
     public void ass10() {
-        // Set the base URL for the API
         RestAssured.baseURI = "https://petstore.swagger.io";
 
         Response response = RestAssured.get("/v2/pet/findByStatus?status=available");
