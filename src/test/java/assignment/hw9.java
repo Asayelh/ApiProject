@@ -18,9 +18,9 @@ public class hw9 {
         requestPayload.put("username", "myusername");
         requestPayload.put("firstName", "John");
         requestPayload.put("lastName", "Doe");
-        requestPayload.put("email", "johndoe@example.com");
-        requestPayload.put("password", "mypassword");
-        requestPayload.put("phone", "1234567890");
+        requestPayload.put("email", "johndoe@gmail.com");
+        requestPayload.put("password", "password");
+        requestPayload.put("phone", "0456789");
         requestPayload.put("userStatus", 0);
 
         Response response = RestAssured.given()
