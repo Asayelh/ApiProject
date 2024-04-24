@@ -13,7 +13,7 @@ public class hw12 {
     public void ass12(){
         RestAssured.baseURI = "https://petstore.swagger.io";
         //Set the expected data --> With Pojo Class
-        pet expectedData = new pet(1,"TestPet",available);
+        pet expectedData = new pet(1,"TestPet","available");
         System.out.println("expectedData = " + expectedData);
 
 
