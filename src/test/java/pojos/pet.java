@@ -8,7 +8,7 @@ public class pet {
     private String name;
     private String status;
 
-    public class pet (){}
+    //public class pet (){}
 
     public pet(Integer id, String name, String status) {
         this.id = id;
