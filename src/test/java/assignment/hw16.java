@@ -11,63 +11,68 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class hw16 {
 
+
     @BeforeClass
     public void setUp() {
         RestAssured.baseURI = "https://your-api-base-url";
+
     }
 
     @Test
-    public void createUserTest() {
-        String requestBody = "{ \"name\": \"John Doe\", \"email\": \"johndoe@example.com\", \"age\": 30 }";
-
-        // Create User
-        String createUserEndpoint = "/users";
+    public void addContactTest() {
+        String requestBody = "{ \"name\": \"John Doe\", \"email\": \"johndoe@example.com\", \"phone\": \"1234567890\" }";
+        String addContactEndpoint = "/contacts";
         Response response = given()
                 .contentType(ContentType.JSON)
                 .body(requestBody)
                 .when()
-                .post(createUserEndpoint)
+                .post(addContactEndpoint)
                 .then()
                 .statusCode(201)
                 .extract()
                 .response();
 
-        int userId = response.jsonPath().getInt("id");
+        int contactId = response.jsonPath().getInt("id");
 
-        // Read
-        String getUserEndpoint = "/users/{id}";
+
+        String getContactEndpoint = "/contacts/{id}";
         given()
-                .pathParam("id", userId)
+                .pathParam("id", contactId)
                 .when()
-                .get(getUserEndpoint)
+                .get(getContactEndpoint)
                 .then()
                 .statusCode(200)
                 .body("name", equalTo("John Doe"))
                 .body("email", equalTo("johndoe@example.com"))
-                .body("age", equalTo(30));
+                .body("phone", equalTo("1234567890"));
 
-        // Update
-        String updateRequestBody = "{ \"name\": \"John Smith\", \"email\": \"johnsmith@example.com\", \"age\": 35 }";
-        String updateUserEndpoint = "/users/{id}";
+        requestBody = "{ \"name\": \"John Smith\", \"email\": \"johnsmith@example.com\", \"phone\": \"9876543210\" }";
+        String updateContactEndpoint = "/contacts/{id}";
         given()
                 .contentType(ContentType.JSON)
-                .pathParam("id", userId)
-                .body(updateRequestBody)
+                .pathParam("id", contactId)
+                .body(requestBody)
                 .when()
-                .put(updateUserEndpoint)
+                .put(updateContactEndpoint)
                 .then()
                 .statusCode(200)
                 .body("name", equalTo("John Smith"))
                 .body("email", equalTo("johnsmith@example.com"))
-                .body("age", equalTo(35));
-
-        // Delete
-        String deleteUserEndpoint = "/users/{id}";
+                .body("phone", equalTo("9876543210"));
+        String deleteContactEndpoint = "/contacts/{id}";
         given()
-                .pathParam("id", userId)
+                .pathParam("id", contactId)
                 .when()
-                .delete(deleteUserEndpoint)
+                .delete(deleteContactEndpoint)
                 .then()
                 .statusCode(204);
+
+        given()
+                .pathParam("id", contactId)
+                .when()
+                .get(getContactEndpoint)
+                .then()
+                .statusCode(404)
+                .body("message", equalTo("Contact not found"));
     }
 }
