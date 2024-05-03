@@ -16,7 +16,7 @@ public class hw15 {
         RestAssured.baseURI = "https://your-api-base-url";
     }
 
-    @Test(priority = 1)
+    @Test
     public void createUserTest() {
         String requestBody = "{ \"name\": \"John Doe\", \"email\": \"johndoe@example.com\", \"age\": 30 }";
 
